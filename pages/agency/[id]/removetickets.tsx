@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function removetickets() {
+export default function RemoveTickets() {
   return (
     <div>removetickets</div>
   )
