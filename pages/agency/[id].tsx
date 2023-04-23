@@ -17,10 +17,10 @@ export default function Dashboard({ ticketsAvailable } : any) {
 
       <div className='flex space-x-5 my-4'>
         <Link href={{
-          pathname: '/agency/[id]/addtickets',
+          pathname: '/agency/[id]/uploadtickets',
           query: { id: id }
         }}>
-            <button className='text-green-500'>Add Tickets</button>
+            <button className='text-green-500'>Upload Tickets</button>
         </Link>
         <Link href={{
           pathname: '/agency/[id]/removetickets',
