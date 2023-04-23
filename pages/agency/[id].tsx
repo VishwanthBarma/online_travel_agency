@@ -2,10 +2,12 @@ import Ticket from '@/components/Tickets/Ticket';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { supabase } from './../../utils/supabaseClient';
 
-export default function Dashboard() {
+export default function Dashboard({ ticketsAvailable } : any) {
   const router = useRouter();
   const { id } = router.query;
+
   return (
     <div className='p-12'>
       <div>
@@ -30,8 +32,21 @@ export default function Dashboard() {
 
       <div>
         <h1 className='font-bold mb-3'>Tickets</h1>
-        <Ticket />
+        {
+          ticketsAvailable.map((item: any) => (
+            <Ticket key={item.id} ticketsAvailable={item}/>
+          ))
+        }
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps(){
+  const { data } = await supabase.from('ticketsAvailable').select('*');
+  return{
+    props: {
+      ticketsAvailable: data,
+    },
+  }
 }

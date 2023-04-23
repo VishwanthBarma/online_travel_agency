@@ -1,6 +1,8 @@
+import { supabase } from '@/utils/supabaseClient'
 import Head from 'next/head'
 
 export default function Home() {
+
   return (
     <>
       <Head>
