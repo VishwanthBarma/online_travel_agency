@@ -1,3 +1,4 @@
+import Ticket from '@/components/Tickets/Ticket';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -27,6 +28,10 @@ export default function Dashboard() {
         </Link>
       </div>
 
+      <div>
+        <h1 className='font-bold mb-3'>Tickets</h1>
+        <Ticket />
+      </div>
     </div>
   )
 }
