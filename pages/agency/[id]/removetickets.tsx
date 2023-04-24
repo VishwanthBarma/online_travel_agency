@@ -31,7 +31,7 @@ export default function RemoveTickets({ ticketsAvailable }: any) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = { departFrom, goingTo, departureDate };
-    const response = await fetch('/api/tickets/removetickets', {
+    const response = await fetch('/api/tickets/searchtickets', {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json'
@@ -39,12 +39,13 @@ export default function RemoveTickets({ ticketsAvailable }: any) {
       body: JSON.stringify(data)
     });
     
-    const result = response.json();
+    const result = await response.json();
+    console.log("Here.....")
     console.log(result);
     
-    setDepartFrom({place: '', time: ''});
-    setGoingTo({place: '', time: ''});
-    setDepartureDate('');
+    // setDepartFrom({place: '', time: ''});
+    // setGoingTo({place: '', time: ''});
+    // setDepartureDate('');
   }
 
   return (
@@ -91,7 +92,7 @@ export default function RemoveTickets({ ticketsAvailable }: any) {
 }
 
 async function deleteTicket(){
-    
+
 }
 
 export async function getServerSideProps(){
