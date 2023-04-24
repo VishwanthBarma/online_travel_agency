@@ -4,6 +4,9 @@ export default function Ticket({ticketsAvailable} : any) {
     const {departFromPlace, departFromTime, goingToPlace, goingToTime, departureDate} = ticketsAvailable;
   return (
     <div className='bg-neutral-800 p-3 rounded-xl flex flex-col text-center m-2'>
+        <div className='bg-neutral-900 p-1 mb-1 rounded-xl'>
+            <button className='font-bold text-red-500'>REMOVE</button>
+        </div>
         <div className='flex justify-around mb-2'>
             <div>
                 <h1 className='font-semibold text-neutral-500'>Depart From : </h1>
