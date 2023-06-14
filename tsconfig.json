@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/supabaseClient.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/supabaseClient.js", "components/authForm.js"],
   "exclude": ["node_modules"]
 }
