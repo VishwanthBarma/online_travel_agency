@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { supabase } from './../../../utils/supabaseClient';
 import Ticket from '@/components/Tickets/Ticket';
 import TicketsDelete from '@/components/Tickets/TicketsDelete';
 
@@ -95,12 +94,12 @@ async function deleteTicket(){
 
 }
 
-export async function getServerSideProps(){
-    const { data } = await supabase.from('ticketsAvailable').select('*');
-    return{
-      props: {
-        ticketsAvailable: data,
-      },
-    }
-  }
+// export async function getServerSideProps(){
+//     const { data } = await supabase.from('ticketsAvailable').select('*');
+//     return{
+//       props: {
+//         ticketsAvailable: data,
+//       },
+//     }
+//   }
 

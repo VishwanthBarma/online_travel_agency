@@ -1,5 +1,4 @@
 import SearchFlights from '@/components/Flight/SearchFlights'
-import { supabase } from '@/utils/supabaseClient'
 import Head from 'next/head'
 
 export default function Home() {

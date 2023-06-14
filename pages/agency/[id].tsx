@@ -2,7 +2,6 @@ import Ticket from '@/components/Tickets/Ticket';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { supabase } from './../../utils/supabaseClient';
 
 export default function Dashboard({ ticketsAvailable } : any) {
   const router = useRouter();
@@ -42,11 +41,11 @@ export default function Dashboard({ ticketsAvailable } : any) {
   )
 }
 
-export async function getServerSideProps(){
-  const { data } = await supabase.from('ticketsAvailable').select('*');
-  return{
-    props: {
-      ticketsAvailable: data,
-    },
-  }
-}
+// export async function getServerSideProps(){
+//   const { data } = await supabase.from('ticketsAvailable').select('*');
+//   return{
+//     props: {
+//       ticketsAvailable: data,
+//     },
+//   }
+// }
