@@ -1,3 +1,4 @@
+import SearchFlights from '@/components/Flight/SearchFlights'
 import { supabase } from '@/utils/supabaseClient'
 import Head from 'next/head'
 
@@ -16,9 +17,8 @@ export default function Home() {
         <h1 className="text-4xl font-bold">
           Group Fair Tickets
         </h1>
-        <div className='bg-white mt-10 w-full h-40 rounded-2xl shadow-neutral-700 shadow-2xl'>
-            <h1 className='text-black'>search</h1>
-        </div>
+            
+        <SearchFlights />
       </div>
       
     </>
