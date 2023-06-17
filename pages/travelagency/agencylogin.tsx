@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 
-function login() {
+function agencylogin() {
     const [signUpGmail, setSignUpGmail] = useState("");
     const [signUpPassword, setSignUpPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -132,8 +132,8 @@ function login() {
     <div className='p-16'>
         <div className='p-4 bg-neutral-800 rounded-2xl flex flex-col space-y-4 '>
             <div className='flex justify-evenly'>
-                <button onClick={() => setLogInClicked(false)} className={`${logInClicked ? "text-slate-300" : "text-sky-500"} font-semibold`}>User Sign Up</button>
-                <button onClick={() => setLogInClicked(true)} className={`${logInClicked ? "text-sky-500" : "text-slate-300"} font-semibold`}>User Login</button>
+                <button onClick={() => setLogInClicked(false)} className={`${logInClicked ? "text-slate-300" : "text-sky-500"} font-semibold`}>Agency Sign Up</button>
+                <button onClick={() => setLogInClicked(true)} className={`${logInClicked ? "text-sky-500" : "text-slate-300"} font-semibold`}>Agency Login</button>
             </div>
 
             <span className='w-full h-1 bg-sky-700 rounded-3xl'></span>
@@ -222,8 +222,8 @@ function login() {
         
 
         <div className='bg-neutral-800 mt-5 p-3 rounded-3xl flex justify-evenly'>
-            <Link className='hover:text-sky-500' href="/travelagency/agencylogin">Agency Login</Link>
-            <Link className='hover:text-sky-500' href="/travelagency/adminlogin">Admin Login</Link>
+            <Link href="/travelagency/login">User Login</Link>
+            <Link href="/travelagency/adminlogin">Admin Login</Link>
         </div>
 
         {/* <form onSubmit={handleLogIn}>
@@ -247,4 +247,4 @@ function login() {
   )
 }
 
-export default login;
+export default agencylogin;
