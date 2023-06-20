@@ -20,24 +20,6 @@ function agencylogin() {
     const [logInPassword, setLogInPassword] = useState("");
 
     const router = useRouter();
-
-    // const [userData, setUserData] = useState(null);
-
-    // useEffect(() => {
-    //     const func = async() => {
-    //         const { data, error } = await supabase.auth.signUp({
-    //             email: "tAgency030423@gmail.com",
-    //             password: "agentAdmin01",
-    //             options: {
-    //                 data:{
-    //                     user_role: "admin"
-    //                 }
-    //             }
-    //         })
-    //     }
-    //     func();
-    //     console.log("Done Done Done")
-    // }, [])
     
     const handleSignUp = async(e: any) => {
         e.preventDefault();
@@ -241,7 +223,6 @@ function agencylogin() {
         <button onClick={handleSignOut}>signout</button>
 
         <button onClick={getUserDetails}>Get User Details</button> */}
-        <button onClick={handleSignOut}>signout</button>
         
     </div>
   )

@@ -74,7 +74,7 @@ function login() {
         if(!error){
             console.log("Successfull SignIn");
             setErrorMessage("");
-            router.push("/");
+            // router.push("/");
         }else{
             console.log("Error in Log in");
             setErrorMessage(error.message);
@@ -95,19 +95,21 @@ function login() {
 
     const getUserDetails = async(e: any) => {
         e.preventDefault();
-        const { data: { user } } = await supabase.auth.getUser()
+        // const { data: {user} } = await supabase.auth.getUser()
         
         // const { data, error } = await supabase
         // .from('user_table')
         // .select()
         // .eq('auth_id', user!.id)
 
-
-        // const { data, error } = await supabase.auth.getSession()
-
+        // console.log(data![0]);
 
 
-        console.log(user?.user_metadata.user_role);
+        const { data, error } = await supabase.auth.getSession()
+        console.log(data?.session?.user?.user_metadata?.user_role);
+
+
+        // console.log(user?.user_metadata.user_role);
     }
 
   return (
@@ -223,6 +225,8 @@ function login() {
         <button onClick={handleSignOut}>signout</button>
 
         <button onClick={getUserDetails}>Get User Details</button> */}
+        <button onClick={getUserDetails}>Get User Details</button>
+
         
     </div>
   )
