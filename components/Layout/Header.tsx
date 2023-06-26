@@ -19,7 +19,7 @@ export default function Header(){
                 query: { userId }
             });
         }else{
-            router.push("/travelagency/login");
+            router.push("/travelagency/user/signup");
         }
     }
 
