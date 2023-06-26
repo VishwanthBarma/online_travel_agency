@@ -1,19 +1,20 @@
-import { RootState } from "@/store";
 import Header from "./Header";
-import { useDispatch, useSelector } from 'react-redux';
-import { ThreeBounce } from "better-react-spinkit";
+import SyncLoader from "react-spinners/SyncLoader";
+import { useContext } from "react";
+import { AgencyContext } from "@/context/AgencyContext";
 
 export default function Layout({children}: any){
-    const loading = useSelector((state: RootState) => state.session.loading);
+    const { loading }: any = useContext(AgencyContext);
 
     return(
         <div>
             {
-                loading?
+                loading ?
     
                 <div className="flex items-center justify-center w-screen h-screen">
-                    <ThreeBounce size={30} color="orange" />
+                    <SyncLoader color="rgb(14 165 233)" size={30} />
                 </div>
+
                 :
     
                 <div className="flex flex-col h-screen">

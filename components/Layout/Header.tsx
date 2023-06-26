@@ -1,55 +1,38 @@
 import { supabase } from "@/utils/supabaseClient";
 import { Session, User } from "@supabase/supabase-js";
 import Link from "next/link";
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
+import { AgencyContext } from "@/context/AgencyContext";
+
 export default function Header(){
     const router = useRouter();
-    const [user, setUser] = useState<User | null>(null);
-    const [session, setSession] = useState<Session | null>(null);
-    useEffect(() => {
-        const fetchUser = async () => {
-            const { data, error } = await supabase.auth.getUser()
-            if (error) {
-              console.error('Error fetching user:', error.message);
-            } else {
-              setUser(data?.user);
-            }
-        }
-
-        const fetchSession = async () => {
-            const { data, error } = await supabase.auth.getSession()
-            if (error) {
-                console.error('Error fetching session:', error.message);
-            } else {
-                setSession(data?.session);
-                fetchUser();
-            }
-        }
-      
-        fetchSession();
-    }, []);
+    const { session, user, clearSession, setLoading }: any = useContext(AgencyContext);
 
     const handleClick = () => {
-        if(user){
-            const userId = user.id;
+        if(session){
+            const userId = user?.id;
             router.push({
                 pathname: `/profiles/[userId]`,
-                query: {userId}
+                query: { userId }
             });
+        }else{
+            router.push("/travelagency/login");
         }
-        router.push("/travelagency/login");
     }
 
     const handleSignOut = async(e: any) => {
         e.preventDefault();
+        setLoading(true);
         const { error } = await supabase.auth.signOut()
         if(error){
             console.log("Error in signout");
             console.log(error);
         }else{
             console.log("SignedOut Success");
+            clearSession();
         }
     }
     return(

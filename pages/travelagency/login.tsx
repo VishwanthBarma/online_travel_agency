@@ -1,10 +1,10 @@
+import { AgencyContext } from '@/context/AgencyContext';
 import { supabase } from '@/utils/supabaseClient';
-import { error } from 'console';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
-function login() {
+const login: React.FC = () => {
     const [signUpGmail, setSignUpGmail] = useState("");
     const [signUpPassword, setSignUpPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -20,9 +20,18 @@ function login() {
     const [logInPassword, setLogInPassword] = useState("");
 
     const router = useRouter();
+    const {session, fetchSession, setLoading}: any = useContext(AgencyContext);
+
+
+    useEffect(() => {
+        if(session){
+            router.push("/");
+        }
+    }, [session]);
     
     const handleSignUp = async(e: any) => {
         e.preventDefault();
+        setLoading(true);
 
         const { data, error } = await supabase.auth.signUp({
             email: signUpGmail,
@@ -55,6 +64,7 @@ function login() {
             }else{
                 console.log("SignUp successfull.")
                 setErrorMessage("");
+                fetchSession();
                 router.push("/");
             }
 
@@ -66,6 +76,7 @@ function login() {
     const handleLogIn = async(e: any) => {
         e.preventDefault();
 
+        setLoading(true);
         const { data, error } = await supabase.auth.signInWithPassword({
             email: logInGmail,
             password: logInPassword,
@@ -74,42 +85,12 @@ function login() {
         if(!error){
             console.log("Successfull SignIn");
             setErrorMessage("");
-            // router.push("/");
+            fetchSession();
+            router.push("/");
         }else{
             console.log("Error in Log in");
             setErrorMessage(error.message);
         }
-  
-    }
-
-    const handleSignOut = async(e: any) => {
-        e.preventDefault();
-        const { error } = await supabase.auth.signOut()
-        if(error){
-            console.log("Error in signout");
-            console.log(error);
-        }else{
-            console.log("SignedOut Success");
-        }
-    }
-
-    const getUserDetails = async(e: any) => {
-        e.preventDefault();
-        // const { data: {user} } = await supabase.auth.getUser()
-        
-        // const { data, error } = await supabase
-        // .from('user_table')
-        // .select()
-        // .eq('auth_id', user!.id)
-
-        // console.log(data![0]);
-
-
-        const { data, error } = await supabase.auth.getSession()
-        console.log(data?.session?.user?.user_metadata?.user_role);
-
-
-        // console.log(user?.user_metadata.user_role);
     }
 
   return (
@@ -200,34 +181,14 @@ function login() {
                             }
                         </form>
                     </div>
-
             }
         </div>
         
-
         <div className='bg-neutral-800 mt-5 p-3 rounded-3xl flex justify-evenly'>
             <Link className='hover:text-sky-500' href="/travelagency/agencylogin">Agency Login</Link>
             <Link className='hover:text-sky-500' href="/travelagency/adminlogin">Admin Login</Link>
         </div>
 
-        {/* <form onSubmit={handleLogIn}>
-            <label>
-                Gmail
-                <input className='text-black' type='email' value={gmail} onChange={e => setGmail(e.target.value)}></input>
-            </label>
-            <label>
-                Password
-                <input className='text-black' type='password' value={password} onChange={e => setPassword(e.target.value)}></input>
-            </label>
-            <button type='submit'>Log IN</button>
-        </form>
-
-        <button onClick={handleSignOut}>signout</button>
-
-        <button onClick={getUserDetails}>Get User Details</button> */}
-        <button onClick={getUserDetails}>Get User Details</button>
-
-        
     </div>
   )
 }
