@@ -5,12 +5,14 @@ import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react'
 
 const Agencysignup: React.FC = () => {
+    const [agencyName, setAgencyName] = useState("");
     const [signUpGmail, setSignUpGmail] = useState("");
     const [signUpPassword, setSignUpPassword] = useState("");
-    const [username, setUsername] = useState("");
-    const [fullname, setFullname] = useState("");
-    const [dataOfBirth, setDateOfBirth] = useState("");
-    const [gender, setGender] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [country, setCountry] = useState("");
+    const [postalCode, setPostalCode] = useState("");
     const [contactNumber, setContactNumber] = useState("");
 
     const [errorMessage, setErrorMessage] = useState("");
@@ -34,7 +36,7 @@ const Agencysignup: React.FC = () => {
             password: signUpPassword,
             options: {
                 data:{
-                    user_role: "client"
+                    user_role: "agent"
                 }
             }
         })
@@ -43,15 +45,17 @@ const Agencysignup: React.FC = () => {
             const new_user_id = data.user!.id;
 
             const { error } = await supabase
-            .from('user_table')
+            .from('agency_table')
             .insert({
                 auth_id: new_user_id,
-                username: username,
                 email: signUpGmail,
-                fullname: fullname,
-                date_of_birth: dataOfBirth,
-                gender: gender,
-                contact_number : contactNumber
+                agency_name: agencyName,
+                contact_number : contactNumber,
+                address: address,
+                city: city,
+                state: state,
+                country: country,
+                postal_code: postalCode
             })
 
             if(error){
@@ -61,12 +65,11 @@ const Agencysignup: React.FC = () => {
                 console.log("SignUp successfull.")
                 setErrorMessage("");
                 fetchSession();
-                router.push("/");
             }
-
         }else{
             setErrorMessage(error.message);
         }
+        setLoading(false);
     }
 
   return (
@@ -94,26 +97,8 @@ const Agencysignup: React.FC = () => {
 
                     <div className='flex items-center'>
                         <label className='font-semibold text-center w-32'>
-                            Username</label>
-                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={username} onChange={e => setUsername(e.target.value)}></input>
-                    </div>
-
-                    <div className='flex items-center'>
-                        <label className='font-semibold text-center w-32'>
-                            Full name</label>
-                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={fullname} onChange={e => setFullname(e.target.value)}></input>
-                    </div>
-
-                    <div className='flex items-center'>
-                        <label className='font-semibold text-center w-32'>
-                            Date of birth </label>
-                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='date' value={dataOfBirth} onChange={e => setDateOfBirth(e.target.value)}></input>
-                    </div>
-
-                    <div className='flex items-center'>
-                        <label className='font-semibold text-center w-32'>
-                            Gender</label>
-                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={gender} onChange={e => setGender(e.target.value)}></input>
+                            AgencyName</label>
+                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={agencyName} onChange={e => setAgencyName(e.target.value)}></input>
                     </div>
 
                     <div className='flex items-center'>
@@ -121,7 +106,37 @@ const Agencysignup: React.FC = () => {
                             Contact number</label>
                         <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={contactNumber} onChange={e => setContactNumber(e.target.value)}></input>
                     </div>
-                    
+
+                    <div className='flex items-center'>
+                        <label className='font-semibold text-center w-32'>
+                            Address</label>
+                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={address} onChange={e => setAddress(e.target.value)}></input>
+                    </div>
+
+                    <div className='flex items-center'>
+                        <label className='font-semibold text-center w-32'>
+                            City</label>
+                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={city} onChange={e => setCity(e.target.value)}></input>
+                    </div>
+
+                    <div className='flex items-center'>
+                        <label className='font-semibold text-center w-32'>
+                            State</label>
+                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={state} onChange={e => setState(e.target.value)}></input>
+                    </div>
+
+                    <div className='flex items-center'>
+                        <label className='font-semibold text-center w-32'>
+                            Country</label>
+                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={country} onChange={e => setCountry(e.target.value)}></input>
+                    </div>
+
+                    <div className='flex items-center'>
+                        <label className='font-semibold text-center w-32'>
+                            PostalCode</label>
+                        <input required className=' bg-neutral-900 p-2 rounded-xl ml-3 outline-none text-white' type='text' value={postalCode} onChange={e => setPostalCode(e.target.value)}></input>
+                    </div>
+
                     
                     <button className='bg-neutral-900 font-bold p-2 text-sky-500 rounded-3xl' type='submit'>Sign Up</button>
                     {

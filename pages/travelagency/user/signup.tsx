@@ -67,6 +67,7 @@ const Usersignup: React.FC = () => {
         }else{
             setErrorMessage(error.message);
         }
+        setLoading(false);
     }
 
 

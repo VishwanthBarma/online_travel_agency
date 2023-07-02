@@ -6,14 +6,13 @@ import React, { useContext, useEffect, useState } from 'react'
 
 const agencylogin: React.FC = () => {
 
-
     const [errorMessage, setErrorMessage] = useState("");
 
     const [logInGmail, setLogInGmail] = useState("");
     const [logInPassword, setLogInPassword] = useState("");
 
     const router = useRouter();
-    const {session, fetchSession, setLoading}: any = useContext(AgencyContext);
+    const {session,loading, fetchSession, setLoading}: any = useContext(AgencyContext);
 
 
     useEffect(() => {
@@ -35,11 +34,11 @@ const agencylogin: React.FC = () => {
             console.log("Successfull SignIn");
             setErrorMessage("");
             fetchSession();
-            router.push("/");
         }else{
             console.log("Error in Log in");
             setErrorMessage(error.message);
         }
+        setLoading(false);
     }
 
   return (
@@ -53,8 +52,6 @@ const agencylogin: React.FC = () => {
             <span className='w-full h-1 bg-sky-700 rounded-3xl'></span>
 
             {/* Login Form  */}
-            
-                
 
             <div className='flex justify-center'>
                     <form onSubmit={handleLogIn} className='flex flex-col space-y-2'>

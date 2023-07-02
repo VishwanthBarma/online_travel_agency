@@ -40,6 +40,7 @@ const Userlogin: React.FC = () => {
             console.log("Error in Log in");
             setErrorMessage(error.message);
         }
+        setLoading(false);
     }
 
   return (

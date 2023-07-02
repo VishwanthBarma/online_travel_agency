@@ -27,10 +27,12 @@ export const AgencyProvider = ({children}: any) => {
     const [userRole, setUserRole] = useState<string | null>(null);
 
     useEffect(() => {
-        // setLoading(true);
         fetchSession();
-        // setLoading(false);
     }, [])  
+
+    useEffect(() => {
+        fetchUserData();
+    }, [userRole])
 
     const fetchSession = async () => {
         setLoading(true);
@@ -40,7 +42,6 @@ export const AgencyProvider = ({children}: any) => {
             setSession(session);
             setUser(session!.user);
             setUserRole(session?.user?.user_metadata?.user_role);
-            console.log("Successfuuly stored in Context")
         }
         if(error){
             setError(error!.message);
@@ -53,12 +54,23 @@ export const AgencyProvider = ({children}: any) => {
         setLoading(true);
 
         const userId = user?.id;
-        const { data, error } = await supabase
-        .from('user_table')
-        .select()
-        .eq('auth_id', userId)
-        setUserData(data![0]);
 
+        if(userRole == "client"){
+            const { data, error } = await supabase
+            .from('user_table')
+            .select()
+            .eq('auth_id', userId)
+            setUserData(data![0]);
+        }
+
+        if(userRole == "agent"){
+            const { data, error } = await supabase
+            .from('agency_table')
+            .select()
+            .eq('auth_id', userId)
+            setUserData(data![0]);
+        }
+        
         setLoading(false);
     }
 

@@ -32,6 +32,7 @@ export default function Header(){
             console.log(error);
         }else{
             console.log("SignedOut Success");
+            router.push("/");
             clearSession();
         }
     }
