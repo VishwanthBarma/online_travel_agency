@@ -1,38 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Online Ticket Booking Agency
 
-## Getting Started
+Welcome to the Online Ticket Booking Agency repository! This project aims to provide a platform for local ticket booking agencies to buy and sell tickets through email communications. With the absence of a proper application for this purpose, this project fills the gap by offering a streamlined and convenient solution.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Next.js: The application is built using Next.js, a powerful React framework that enables server-side rendering and efficient client-side navigation.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- TypeScript: The project utilizes TypeScript, a statically-typed superset of JavaScript, for improved code reliability and developer productivity.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Tailwind CSS: Tailwind CSS is used for styling the application, providing a utility-first approach to create responsive and visually appealing user interfaces.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Superbase: Superbase is the chosen database for this project, offering a flexible and scalable solution for storing and retrieving data.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Functionalities
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Account Creation: Local ticket sellers can create an account on the platform, providing their necessary details and information.
 
-## Learn More
+2. Content Publishing: Sellers can publish their available tickets, specifying details such as event name, date, location, price, and quantity.
 
-To learn more about Next.js, take a look at the following resources:
+3. Ticket Purchase: Users can log in to the application and browse the available tickets. They can then proceed to purchase the desired tickets directly from the sellers.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To run the Online Ticket Booking Agency application locally, follow these steps:
 
-## Deploy on Vercel
+1. Clone this repository to your local machine using the following command:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```
+   git clone [<repository_url>](https://github.com/VishwanthBarma/online_travel_agency)
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. Navigate to the project directory:
+
+   ```
+   cd Online-Ticket-Booking-Agency
+   ```
+
+3. Install the project dependencies by running the following command:
+
+   ```
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+5. Open your browser and access the application at `http://localhost:3000`.
+
+## Contribution Guidelines
+
+Contributions to the Online Ticket Booking Agency project are welcome. If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For any inquiries or further information, please contact [Your Name](mailto:your-email@example.com).
+
+Thank you for visiting this repository! Get ready to revolutionize the ticket booking experience with the Online Ticket Booking Agency.

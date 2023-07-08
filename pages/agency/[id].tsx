@@ -1,3 +1,4 @@
+import AgencyDashboard from '@/components/Dashboard/Agency/AgencyDashboard';
 import { AgencyContext } from '@/context/AgencyContext';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
@@ -22,7 +23,7 @@ function Dashboard() {
       <div className='flex space-x-5 items-center'>
         <h1 className='text-xl font-bold'>{userData?.agency_name}</h1>
         {
-          is_verified?
+          !is_verified?
           <h1 className='text-xs font-semibold text-green-400 border-2 border-green-500 rounded-3xl px-4 py-1'>Approved</h1>
           :
           <h1 className='text-xs font-semibold text-yellow-400 border-2 border-yellow-500 rounded-3xl px-4 py-1'>Approval Pending</h1>
@@ -40,7 +41,13 @@ function Dashboard() {
         </>
         :
         <>
-          <div className='flex space-x-5 my-4'>
+
+          <div className='my-4'>
+            <AgencyDashboard />
+          </div>
+
+
+          {/* <div className='flex space-x-5 my-4'>
             <Link href={{
               pathname: '/agency/[id]/uploadtickets',
               query: { id: id }
@@ -53,7 +60,7 @@ function Dashboard() {
             }}>
               <button className='text-rose-500'>Remove Tickets</button>
             </Link>
-          </div>
+          </div> */}
         </>
       }
     </div>
