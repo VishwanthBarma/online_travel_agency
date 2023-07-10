@@ -1,6 +1,7 @@
 import React from 'react'
 import Widgets from './Widgets'
 import AvailableTickets from './AvailableTickets'
+import SoldTickets from './SoldTickets'
 
 function AgencyDashboard() {
   return (
@@ -8,6 +9,7 @@ function AgencyDashboard() {
         {/* Widgets */}
         <Widgets />
         <AvailableTickets />
+        <SoldTickets />
     </div>
   )
 }
