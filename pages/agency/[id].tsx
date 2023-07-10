@@ -41,26 +41,9 @@ function Dashboard() {
         </>
         :
         <>
-
           <div className='my-4'>
             <AgencyDashboard />
           </div>
-
-
-          {/* <div className='flex space-x-5 my-4'>
-            <Link href={{
-              pathname: '/agency/[id]/uploadtickets',
-              query: { id: id }
-            }}>
-                <button className='text-green-500'>Upload Tickets</button>
-            </Link>
-            <Link href={{
-              pathname: '/agency/[id]/removetickets',
-              query: { id: id }
-            }}>
-              <button className='text-rose-500'>Remove Tickets</button>
-            </Link>
-          </div> */}
         </>
       }
     </div>
