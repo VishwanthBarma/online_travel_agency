@@ -16,6 +16,10 @@ export default function Home() {
         query: { id }
       })
     }
+    
+    if(userRole == "admin"){
+      router.push("/admin")
+    }
   }, []);
 
   return (
