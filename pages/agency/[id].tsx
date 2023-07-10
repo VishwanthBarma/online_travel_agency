@@ -23,7 +23,7 @@ function Dashboard() {
       <div className='flex space-x-5 items-center'>
         <h1 className='text-xl font-bold'>{userData?.agency_name}</h1>
         {
-          !is_verified?
+          is_verified?
           <h1 className='text-xs font-semibold text-green-400 border-2 border-green-500 rounded-3xl px-4 py-1'>Approved</h1>
           :
           <h1 className='text-xs font-semibold text-yellow-400 border-2 border-yellow-500 rounded-3xl px-4 py-1'>Approval Pending</h1>
@@ -31,7 +31,7 @@ function Dashboard() {
       </div>
 
       {
-        is_verified ?
+        !is_verified ?
         <>
           <div className='flex flex-col justify-center items-center text-center bg-neutral-800 mt-16 p-10 rounded-3xl space-y-1'>
             <h1 className='font-semibold text-rose-500'>Account Verification Required</h1>
