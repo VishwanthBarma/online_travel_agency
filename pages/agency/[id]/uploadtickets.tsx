@@ -1,32 +1,35 @@
-import React, { useState } from 'react'
-
-type ticket = {
-  departFrom : {
-    place : string,
-    time : TimeRanges,
-  },
-  goingTo : {
-    place : string,
-    time : TimeRanges,
-  },
-  departureDate : Date,
-}
+import { AgencyContext } from '@/context/AgencyContext';
+import { useRouter } from 'next/router';
+import React, { useContext, useState } from 'react'
+import { Toaster, toast } from 'react-hot-toast';
 
 export default function UploadTickets() {
-  const [departFrom, setDepartFrom] = useState({
-    place: '',
-    time: '',
-  });
-  const [goingTo, setGoingTo] = useState({
-    place: '',
-    time: '',
-  });
-  const [departureDate, setDepartureDate] = useState('');
+  const [departureCity, setDepartureCity] = useState("");
+  const [arrivalCity, setArrivalCity] = useState("");
+  const [departureDateTime, setDepartureDateTime] = useState("");
+  const [arrivalDateTime, setArrivalDateTime] = useState("");
+  const [availableSeats, setAvailableSeats] = useState("");
+  const [price, setPrice] = useState("");
+  const [flightNumber, setFlightNumber] = useState("");
 
-  
+  const { userData }: any = useContext(AgencyContext);
+  const agencyId = userData.agency_id;
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const data = { departFrom, goingTo, departureDate };
+    const notification = toast.loading("Uploading Ticket...");
+
+    const data = {
+      agencyId,
+      departureCity,
+      arrivalCity,
+      departureDateTime,
+      arrivalDateTime,
+      availableSeats,
+      price,
+      flightNumber
+      };
+
     const response = await fetch('/api/tickets/uploadtickets', {
       method: 'POST',
       headers: {
@@ -38,40 +41,76 @@ export default function UploadTickets() {
     const result = response.json();
     console.log(result);
     
-    setDepartFrom({place: '', time: ''});
-    setGoingTo({place: '', time: ''});
-    setDepartureDate('');
+    setDepartureCity("");
+    setArrivalCity("");
+    setDepartureDateTime("");
+    setArrivalDateTime("");
+    setAvailableSeats("");
+    setPrice("");
+    setFlightNumber("");
+
+    toast.success("Ticket Uploaded Successfully.", {
+      id: notification,
+    });
+
   }
+
 
   return (
     <div className='p-12'>
+      <Toaster />
       <h1 className='font-bold text-xl text-sky-500 mb-5'>Upload Tickets</h1>
-      <form className='flex flex-col space-y-4' onSubmit={handleSubmit}>
-        <label className='font-semibold'>
-          Depart From :
-          <input className='p-2 mr-5 rounded-xl mx-2 outline-none bg-neutral-800 font-bold' type="text" value={departFrom.place} placeholder='Place'
-           onChange={(e) => setDepartFrom({...departFrom, place: e.target.value})}></input>
-           <a className='font-semibold mr-2'>Time</a>
-          <input className='p-2 outline-none bg-neutral-800 rounded-xl' type="time" value={departFrom.time} placeholder='Time'
-            onChange={(e) => setDepartFrom({...departFrom, time: e.target.value})}></input>
-        </label>
 
-        <label className='font-semibold ml-7'>
-          Going To :
-          <input className='p-2 mr-5 rounded-xl mx-2 outline-none bg-neutral-800 font-bold' type="text" value={goingTo.place} placeholder='Place'
-           onChange={(e) => setGoingTo({...goingTo, place: e.target.value})}></input>
-           <a className='font-semibold mr-2'>Time</a>
-          <input className='p-2 outline-none bg-neutral-800 rounded-xl' type="time" value={goingTo.time} placeholder='Time'
-            onChange={(e) => setGoingTo({...goingTo, time: e.target.value})}></input>
-        </label>
-
-        <label className='font-semibold'>
-          Departure Date :
-          <input className='p-2 outline-none bg-neutral-800 rounded-xl ml-2' type="date" value={departureDate} placeholder='Time'
-            onChange={(e) => setDepartureDate(e.target.value)}></input>
-        </label>
-
-        <button type="submit" className='bg-neutral-800 rounded-xl p-2 text-sky-500 font-bold hover:bg-opacity-80'>Upload</button>
+      <form onSubmit={handleSubmit} className="max-w-lg flex flex-col">
+        <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label className="block uppercase text-white tracking-wid text-xs font-bold mb-2" htmlFor="departure-city">
+              Departure City
+            </label>
+            <input value={departureCity} onChange={(e) => setDepartureCity(e.target.value)} className="p-2 w-full outline-none rounded-xl bg-neutral-800" id="departure-city" type="text" placeholder="" required></input>
+          </div>
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2" htmlFor="arrival-city">
+              Arrival City
+            </label>
+            <input value={arrivalCity} onChange={(e) => setArrivalCity(e.target.value)} className="p-2 w-full outline-none rounded-xl bg-neutral-800" id="arrival-city" type="text" placeholder="" required></input>
+          </div>
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label className="block uppercase text-white tracking-wid text-xs font-bold mb-2" htmlFor="departure-datetime">
+              Departure DateTime
+            </label>
+            <input value={departureDateTime} onChange={(e) => setDepartureDateTime(e.target.value)} className="p-2 w-full outline-none rounded-xl bg-neutral-800" id="departure-datetime" type="datetime-local" placeholder="" required></input>
+          </div>
+          <div className="w-full md:w-1/2 px-3">
+            <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2" htmlFor="arrival-datetime">
+              Arrival DateTime
+            </label>
+            <input value={arrivalDateTime} onChange={(e) => setArrivalDateTime(e.target.value)} className="p-2 w-full outline-none rounded-xl bg-neutral-800" id="arrival-datetime" type="datetime-local" placeholder="" required></input>
+          </div>
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2" htmlFor="available-seats">
+              Available Seats
+            </label>
+            <input value={availableSeats} onChange={(e) => setAvailableSeats(e.target.value)} className="p-2 block w-full outline-none rounded-xl bg-neutral-800" id="available-seats" type="text" placeholder=""></input>
+          </div>
+          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2" htmlFor="price">
+              Price
+            </label>
+            <input value={price} onChange={(e) => setPrice(e.target.value)} className="p-2 block w-full outline-none rounded-xl bg-neutral-800" id="price" type="text" placeholder=""></input>
+          </div>
+          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2" htmlFor="flight-number">
+              Flight Number
+            </label>
+            <input value={flightNumber} onChange={(e) => setFlightNumber(e.target.value)} className="p-2 block w-full outline-none rounded-xl bg-neutral-800" id="flight-number" type="text" placeholder=""></input>
+          </div>
+        </div>
+        <button type='submit' className='font-bold text-sky-500 bg-neutral-800 rounded-xl mt-5 p-2 hover:bg-opacity-50'>Upload</button>
       </form>
     </div>
   )

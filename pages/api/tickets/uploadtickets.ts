@@ -2,14 +2,9 @@
 import { supabase } from '@/utils/supabaseClient';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-  place: string,
-  time: string
-}
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
 
   if(req.method === "POST"){
@@ -17,10 +12,16 @@ export default async function handler(
     const data = req.body;
 
     const { error } = await supabase
-      .from('ticketsAvailable')
-      .insert({departFromPlace : data.departFrom.place, departFromTime: data.departFrom.time,
-              goingToPlace: data.goingTo.place, goingToTime: data.goingTo.time,
-              departureDate: data.departureDate
+      .from('flight_table')
+      .insert({
+        agency_id: data.agencyId,
+        departure_city: data.departureCity,
+        arrival_city: data.arrivalCity,
+        departure_datetime: data.departureDateTime,
+        arrival_datetime: data.arrivalDateTime,
+        available_seats: data.availableSeats,
+        price: data.price,
+        flight_number: data.flightNumber
       })
 
     if(error){

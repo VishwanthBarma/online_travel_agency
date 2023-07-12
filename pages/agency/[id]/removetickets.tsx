@@ -16,42 +16,38 @@ type ticket = {
 }
 
 export default function RemoveTickets({ ticketsAvailable }: any) {
-  const [departFrom, setDepartFrom] = useState({
-    place: '',
-    time: '',
-  });
-  const [goingTo, setGoingTo] = useState({
-    place: '',
-    time: '',
-  });
-  const [departureDate, setDepartureDate] = useState('');
 
   
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const data = { departFrom, goingTo, departureDate };
-    const response = await fetch('/api/tickets/searchtickets', {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+  //   const data = { departFrom, goingTo, departureDate };
+  //   const response = await fetch('/api/tickets/searchtickets', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type' : 'application/json'
+  //     },
+  //     body: JSON.stringify(data)
+  //   });
     
-    const result = await response.json();
-    console.log("Here.....")
-    console.log(result);
+  //   const result = await response.json();
+  //   console.log("Here.....")
+  //   console.log(result);
     
-    // setDepartFrom({place: '', time: ''});
-    // setGoingTo({place: '', time: ''});
-    // setDepartureDate('');
+  //   setDepartFrom({place: '', time: ''});
+  //   setGoingTo({place: '', time: ''});
+  //   setDepartureDate('');
+  // }
+
+  const handleSubmit = () => {
+    
   }
 
   return (
     <div className='p-12'>
       <h1 className='font-bold text-xl text-sky-500 mb-5'>Remove Tickets</h1>
       <form className='flex flex-col space-y-4' onSubmit={handleSubmit}>
-        <label className='font-semibold'>
+
+        {/* <label className='font-semibold'>
           Depart From :
           <input className='p-2 mr-5 rounded-xl mx-2 outline-none bg-neutral-800 font-bold' type="text" value={departFrom.place} placeholder='Place'
            onChange={(e) => setDepartFrom({...departFrom, place: e.target.value})}></input>
@@ -73,18 +69,18 @@ export default function RemoveTickets({ ticketsAvailable }: any) {
           Departure Date :
           <input className='p-2 outline-none bg-neutral-800 rounded-xl ml-2' type="date" value={departureDate} placeholder='Time'
             onChange={(e) => setDepartureDate(e.target.value)}></input>
-        </label>
+        </label> */}
 
         <button type="submit" className='bg-neutral-800 rounded-xl p-2 text-sky-500 font-bold hover:bg-opacity-80'>Search</button>
       </form>
 
       <div className='mt-4'>
         <h1 className='font-bold mb-3'>Tickets</h1>
-        {
+        {/* {
           ticketsAvailable.map((item: any) => (
             <TicketsDelete key={item.id} ticketsAvailable={item}/>
           ))
-        }
+        } */}
       </div>
     </div>
   )
