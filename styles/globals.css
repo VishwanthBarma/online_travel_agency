@@ -9,3 +9,10 @@ html {
     margin: 0;
     padding: 0;
   }
+
+  .c1 {
+    background: #C6FFDD;
+    background: linear-gradient(to right, #C6FFDD 0%, #FBD786 50%, #f7797d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+  }
