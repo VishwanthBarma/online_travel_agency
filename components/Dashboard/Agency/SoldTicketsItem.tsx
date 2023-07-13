@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 
-function SoldTicketsItem() {
+function SoldTicketsItem({data, index}: any) {
     const [moreClicked, setMoreClicked] = useState(false);
   return (
     <div className='flex flex-col border-b-2 border-neutral-900'>
         <div className='flex items-center p-2'>
-            <h1 className='w-1/6 text-neutral-400'>01</h1>
+            <h1 className='w-1/6 text-neutral-400'>{index}</h1>
             <div className='flex w-3/6'>
                 <div className='w-2/5'>
                     <h1 className='text-xs text-neutral-500'>From</h1>
-                    <h1 className=''>Hyderabad</h1>
+                    <h1 className=''>{data.departure_city}</h1>
                 </div>
                 <h1 className='w-1/5'>-</h1>
                 <div className='w-2/5'>
                     <h1 className='text-xs text-neutral-500'>To</h1>
-                    <h1 className=''>Delhi</h1>
+                    <h1 className=''>{data.arrival_city}</h1>
                 </div>
             </div>
-            <h1 className='w-1/6'>2300$</h1>
+            <h1 className='w-1/6'>{data.price}$</h1>
             {
                 !moreClicked?
                 <button onClick={() => setMoreClicked(!moreClicked)} className='w-1/6 text-sky-500'>More</button>

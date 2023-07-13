@@ -2,6 +2,7 @@ import { AgencyContext } from '@/context/AgencyContext';
 import { useRouter } from 'next/router';
 import React, { useContext, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
+import { IoArrowBack } from "react-icons/io5";
 
 export default function UploadTickets() {
   const [departureCity, setDepartureCity] = useState("");
@@ -12,8 +13,10 @@ export default function UploadTickets() {
   const [price, setPrice] = useState("");
   const [flightNumber, setFlightNumber] = useState("");
 
+  const router = useRouter();
+
   const { userData }: any = useContext(AgencyContext);
-  const agencyId = userData.agency_id;
+  const agencyId = userData?.agency_id;
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -59,6 +62,10 @@ export default function UploadTickets() {
   return (
     <div className='p-12'>
       <Toaster />
+      <div onClick={() => router.back()} className='text-sm flex items-center space-x-1 text-neutral-400 hover:text-neutral-200'>
+        <IoArrowBack />
+        <button className=''>Back</button>
+      </div>
       <h1 className='font-bold text-xl text-sky-500 mb-5'>Upload Tickets</h1>
 
       <form onSubmit={handleSubmit} className="max-w-lg flex flex-col">

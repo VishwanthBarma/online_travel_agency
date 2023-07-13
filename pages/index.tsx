@@ -5,12 +5,12 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react'
 
 export default function Home() {
-  const { userRole, user }: any = useContext(AgencyContext);
+  const { userRole, user, userData }: any = useContext(AgencyContext);
   const router = useRouter();
 
   useEffect(() => {
-    const id = user?.id;
     if(userRole == "agent"){
+      const id = userData?.agency_id;
       router.push({
         pathname: `/agency/[id]`,
         query: { id }

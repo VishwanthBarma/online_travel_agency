@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function AvailableTicketsItem() {
+function AvailableTicketsItem({data, index}: any) {
     const [editClicked, setEditClicked] = useState(false);
     const [departFrom, setDepartFrom] = useState({
         place: '',
@@ -19,19 +19,19 @@ function AvailableTicketsItem() {
   return (
     <div className='flex flex-col border-b-2 border-neutral-900'>
         <div className='flex items-center p-2 font-medium'>
-            <h1 className='w-1/6 text-neutral-400'>01</h1>
+            <h1 className='w-1/6 text-neutral-400'>{index}</h1>
             <div className='flex w-3/6'>
                 <div className='w-2/5'>
                     <h1 className='text-sm text-neutral-500'>From</h1>
-                    <h1 className='font-semibold'>Hyderabad</h1>
+                    <h1 className='font-semibold'>{data.departure_city}</h1>
                 </div>
                 <h1 className='w-1/5'>-</h1>
                 <div className='w-2/5'>
                     <h1 className='text-sm text-neutral-500'>To</h1>
-                    <h1 className='font-semibold'>Delhi</h1>
+                    <h1 className='font-semibold'>{data.arrival_city}</h1>
                 </div>
             </div>
-            <h1 className='w-1/6 font-bold text-green-500'>2300$</h1>
+            <h1 className='w-1/6 font-bold text-green-500'>{data.price}$</h1>
             {
                 !editClicked?
                 <button onClick={() => setEditClicked(!editClicked)} className='w-1/6 font-normal text-sky-500'>Edit</button>

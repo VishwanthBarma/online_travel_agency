@@ -1,13 +1,13 @@
-import AgencyDashboard from '@/components/Dashboard/Agency/AgencyDashboard';
+import AvailableTickets from '@/components/Dashboard/Agency/AvailableTickets';
+import SoldTickets from '@/components/Dashboard/Agency/SoldTickets';
+import Widgets from '@/components/Dashboard/Agency/Widgets';
 import { AgencyContext } from '@/context/AgencyContext';
-import { GetServerSideProps } from 'next';
-import Link from 'next/link';
+import { supabase } from '@/utils/supabaseClient';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react'
 
-function Dashboard() {
+function Dashboard({availableTickets, soldTickets}: any) {
   const router = useRouter();
-  const { id } = router.query;
   const { userData, userRole, fetchUserData }: any = useContext(AgencyContext);
 
   useEffect(() => {
@@ -41,8 +41,10 @@ function Dashboard() {
         </>
         :
         <>
-          <div className='my-4'>
-            <AgencyDashboard />
+          <div className='my-4 flex flex-col space-y-5'>
+            <Widgets availableTickets={availableTickets.length} soldTickets={soldTickets.length}/>
+            <AvailableTickets data={availableTickets}/>
+            <SoldTickets data={soldTickets}/>
           </div>
         </>
       }
@@ -51,3 +53,31 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+export async function getServerSideProps(context: any) {
+  const { id } = context.query;
+  const { data, error } = await supabase
+    .from('flight_table')
+    .select('*')
+    .eq('agency_id', id);
+
+  if (error) {
+    console.error('Error fetching table data:', error);
+    return {
+      props: {
+        availableTickets: [],
+        soldTickets: [],
+      },
+    };
+  }
+
+  const availableTickets = data.filter((item) => item.sold === false);
+  const soldTickets = data.filter((item) => item.sold === true);
+
+  return {
+    props: {
+      availableTickets,
+      soldTickets,
+    },
+  };
+}
