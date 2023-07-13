@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     if(userRole == "agent"){
-      const id = userData?.agency_id;
+      const id = userData?.agency_id; //1
       router.push({
         pathname: `/agency/[id]`,
         query: { id }
