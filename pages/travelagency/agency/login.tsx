@@ -2,7 +2,7 @@ import { AgencyContext } from '@/context/AgencyContext';
 import { supabase } from '@/utils/supabaseClient';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { FormEvent, useContext, useEffect, useState } from 'react'
 
 const agencylogin: React.FC = () => {
 
@@ -21,7 +21,7 @@ const agencylogin: React.FC = () => {
         }
     }, [session]);
 
-    const handleLogIn = async(e: any) => {
+    const handleLogIn = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         setLoading(true);

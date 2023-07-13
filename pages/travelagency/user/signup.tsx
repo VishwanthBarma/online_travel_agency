@@ -2,7 +2,7 @@ import { AgencyContext } from '@/context/AgencyContext';
 import { supabase } from '@/utils/supabaseClient';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { FormEvent, useContext, useEffect, useState } from 'react'
 
 const Usersignup: React.FC = () => {
     const [signUpGmail, setSignUpGmail] = useState("");
@@ -25,7 +25,7 @@ const Usersignup: React.FC = () => {
         }
     }, [session]);
     
-    const handleSignUp = async(e: any) => {
+    const handleSignUp = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
 

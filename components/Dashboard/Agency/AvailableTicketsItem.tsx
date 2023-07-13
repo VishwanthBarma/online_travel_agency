@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { FormEvent, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
+import { capitalize } from 'lodash';
 
 function AvailableTicketsItem({data, index}: any) {
     const departure_date = new Date(data.departure_datetime);
@@ -75,14 +76,14 @@ function AvailableTicketsItem({data, index}: any) {
             <div className='flex flex-1'>
                 <div className='w-2/5'>
                     <h1 className='text-xs text-neutral-500 uppercase'>Departure</h1>
-                    <h1 className='font-semibold text-yellow-500'>{data.departure_city}</h1>
+                    <h1 className='font-semibold text-yellow-500'>{capitalize(data.departure_city)}</h1>
                     <h1 className='font-semibold text-sm'>{departure_date.toLocaleDateString('en-US', options)}</h1>
                     <h1 className='font-medium text-xs text-neutral-400'>{departure_date.toLocaleTimeString()}</h1>
                 </div>
                 <h1 className='w-1/5'>-</h1>
                 <div className='w-2/5'>
                     <h1 className='text-xs text-neutral-500 uppercase'>Arrival</h1>
-                    <h1 className='font-semibold text-yellow-500'>{data.arrival_city}</h1>
+                    <h1 className='font-semibold text-yellow-500'>{capitalize(data.arrival_city)}</h1>
                     <h1 className='font-semibold text-sm'>{arrival_date.toLocaleDateString('en-US', options)}</h1>
                     <h1 className='font-medium text-xs text-neutral-400'>{arrival_date.toLocaleTimeString()}</h1>
                 </div>

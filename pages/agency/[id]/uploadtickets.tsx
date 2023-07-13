@@ -1,6 +1,6 @@
 import { AgencyContext } from '@/context/AgencyContext';
 import { useRouter } from 'next/router';
-import React, { useContext, useState } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
 import { IoArrowBack } from "react-icons/io5";
 
@@ -18,9 +18,11 @@ export default function UploadTickets() {
   const { userData }: any = useContext(AgencyContext);
   const agencyId = userData?.agency_id;
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const notification = toast.loading("Uploading Ticket...");
+
+    // const lowerDepartureCity = 
 
     const data = {
       agencyId,

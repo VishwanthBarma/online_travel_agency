@@ -15,8 +15,8 @@ export default async function handler(
       .from('flight_table')
       .insert({
         agency_id: data.agencyId,
-        departure_city: data.departureCity,
-        arrival_city: data.arrivalCity,
+        departure_city: data.departureCity.toLowerCase(),
+        arrival_city: data.arrivalCity.toLowerCase(),
         departure_datetime: data.departureDateTime,
         arrival_datetime: data.arrivalDateTime,
         available_seats: data.availableSeats,
