@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 
 function SearchFlights() {
   const [departFrom, setDepartFrom] = useState("");
   const [goingTo, setGoingTo] = useState("");
   const [departureDate, setDepartureDate] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(departFrom + goingTo + departureDate);
 

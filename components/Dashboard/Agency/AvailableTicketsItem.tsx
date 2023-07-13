@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast';
 
 function AvailableTicketsItem({data, index}: any) {
@@ -25,7 +25,7 @@ function AvailableTicketsItem({data, index}: any) {
 
     const flightId = data.flight_id;
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const notification = toast.loading("Editing Ticket...");
     
@@ -51,21 +51,14 @@ function AvailableTicketsItem({data, index}: any) {
         
         const result = response.json();
         console.log(result);
-        
-        setDepartureCity("");
-        setArrivalCity("");
-        setDepartureDateTime("");
-        setArrivalDateTime("");
-        setAvailableSeats("");
-        setPrice("");
-        setFlightNumber("");
+
         setEditClicked(false);
     
         toast.success("Ticket Updated Successfully.", {
           id: notification,
         });
     
-      }
+    }
 
     const options:  Intl.DateTimeFormatOptions = {
     year: 'numeric',
@@ -84,14 +77,14 @@ function AvailableTicketsItem({data, index}: any) {
                     <h1 className='text-xs text-neutral-500 uppercase'>Departure</h1>
                     <h1 className='font-semibold text-yellow-500'>{data.departure_city}</h1>
                     <h1 className='font-semibold text-sm'>{departure_date.toLocaleDateString('en-US', options)}</h1>
-                    <h1 className='font-medium text-xs'>{departure_date.toLocaleTimeString()}</h1>
+                    <h1 className='font-medium text-xs text-neutral-400'>{departure_date.toLocaleTimeString()}</h1>
                 </div>
                 <h1 className='w-1/5'>-</h1>
                 <div className='w-2/5'>
                     <h1 className='text-xs text-neutral-500 uppercase'>Arrival</h1>
                     <h1 className='font-semibold text-yellow-500'>{data.arrival_city}</h1>
                     <h1 className='font-semibold text-sm'>{arrival_date.toLocaleDateString('en-US', options)}</h1>
-                    <h1 className='font-medium text-xs'>{arrival_date.toLocaleTimeString()}</h1>
+                    <h1 className='font-medium text-xs text-neutral-400'>{arrival_date.toLocaleTimeString()}</h1>
                 </div>
             </div>
             <h1 className='w-1/6 font-bold text-green-500 text-center'>{data.price}$</h1>

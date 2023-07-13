@@ -3,7 +3,7 @@ import { supabase } from '@/utils/supabaseClient';
 import { error } from 'console';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { FormEvent, useContext, useEffect, useState } from 'react'
 
 function adminlogin() {
     const [errorMessage, setErrorMessage] = useState("");
@@ -15,7 +15,7 @@ function adminlogin() {
     const {session, fetchSession, setLoading}: any = useContext(AgencyContext);
 
 
-    const handleLogIn = async(e: any) => {
+    const handleLogIn = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         setLoading(true);

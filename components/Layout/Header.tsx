@@ -3,7 +3,7 @@ import { Session, User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { AgencyContext } from "@/context/AgencyContext";
 
