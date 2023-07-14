@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { FormEvent, useState } from 'react'
 
-function SearchFlightsAgain() {
-    const [departureCity, setDepartureCity] = useState("");
-    const [arrivalCity, setArrivalCity] = useState("");
-    const [departureDate, setDepartureDate] = useState("");
+function SearchFlightsAgain({departure_date, arrival_city, departure_city}: any) {
+    const [departureCity, setDepartureCity] = useState(departure_city);
+    const [arrivalCity, setArrivalCity] = useState(arrival_city);
+    const [departureDate, setDepartureDate] = useState(departure_date);
   
     const router = useRouter();
   
@@ -20,7 +20,7 @@ function SearchFlightsAgain() {
     }
 
   return (
-    <div className='bg-neutral-700 px-2 py-4 rounded-xl'>
+    <div className='bg-neutral-800 px-2 py-4 rounded-xl shadow-xl shadow-black'>
         <form onSubmit={handleSubmit} className='flex items-center space-x-2 justify-between'>
             <div className='flex flex-col space-y-1'>
                 <h1 className='uppercase font-semibold text-xs'>Departure City</h1>
@@ -50,7 +50,7 @@ function SearchFlightsAgain() {
                 className='bg-neutral-900 p-1 rounded-xl outline-none'
                 ></input>
             </div>
-            <button type="submit" className='bg-sky-500 h-8 px-2 font-semibold rounded-xl'>Search Again</button>
+            <button type="submit" className='bg-sky-500 h-8 px-3 font-semibold rounded-xl'>Search</button>
 
         </form>
     </div>
