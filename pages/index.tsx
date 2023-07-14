@@ -1,4 +1,4 @@
-import SearchFlights from '@/components/Flight/SearchFlights'
+import SearchFlights from '@/components/Search/SearchFlights'
 import { AgencyContext } from '@/context/AgencyContext'
 import Head from 'next/head'
 import { useRouter } from 'next/router';
