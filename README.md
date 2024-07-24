@@ -1,65 +1,102 @@
-# Online Ticket Booking Agency
+# TicketGalaxy - Flight Ticket Booking Platform
 
-Welcome to the Online Ticket Booking Agency repository! This project aims to provide a platform for local ticket booking agencies to buy and sell tickets through email communications. With the absence of a proper application for this purpose, this project fills the gap by offering a streamlined and convenient solution.
+**Ticket Booking Platform** is a robust solution for managing and facilitating event ticket sales. Built with modern web technologies like Next.js, TypeScript, Tailwind CSS, and Supabase, this platform ensures seamless transactions and a user-friendly experience.
 
-## Technologies Used
+---
 
-- Next.js: The application is built using Next.js, a powerful React framework that enables server-side rendering and efficient client-side navigation.
+## Screenshots
 
-- TypeScript: The project utilizes TypeScript, a statically-typed superset of JavaScript, for improved code reliability and developer productivity.
+### Home Page
 
-- Tailwind CSS: Tailwind CSS is used for styling the application, providing a utility-first approach to create responsive and visually appealing user interfaces.
+![Home Page](screenshots/HomePage.png)
 
-- Superbase: Superbase is the chosen database for this project, offering a flexible and scalable solution for storing and retrieving data.
+### Login Page
 
-## Functionalities
+![Login Page](screenshots/LoginPage.png)
 
-1. Account Creation: Local ticket sellers can create an account on the platform, providing their necessary details and information.
+### Agency Dashboard
 
-2. Content Publishing: Sellers can publish their available tickets, specifying details such as event name, date, location, price, and quantity.
+![Dashboard](screenshots/AgencyDashboard.png)
+![Dashboard](screenshots/AgencyDashboard2.png)
 
-3. Ticket Purchase: Users can log in to the application and browse the available tickets. They can then proceed to purchase the desired tickets directly from the sellers.
+### Uploading Tickets
 
-## Installation
+![Event Publishing](screenshots/UploadTickets.png)
 
-To run the Online Ticket Booking Agency application locally, follow these steps:
+### Database Tables
 
-1. Clone this repository to your local machine using the following command:
+![Database Tables](screenshots/Database.png)
 
-   ```
-   git clone [<repository_url>](https://github.com/VishwanthBarma/online_travel_agency)
-   ```
+---
 
-2. Navigate to the project directory:
+## Features
 
-   ```
-   cd Online-Ticket-Booking-Agency
-   ```
+- **User Authentication**
 
-3. Install the project dependencies by running the following command:
+  - Users can create accounts and log in to access the platform.
+  - Secure and smooth authentication process via email communications.
 
-   ```
-   npm install
-   ```
+- **Account Management**
 
-4. Start the development server:
+  - Users can manage their accounts, update profiles, and view their purchase history.
 
-   ```
-   npm run dev
-   ```
+- **Ticket Publishing**
 
-5. Open your browser and access the application at `http://localhost:3000`.
+  - Event organizers can publish tickets with comprehensive event details.
+  - Details include event name, date, time, location, and ticket price.
 
-## Contribution Guidelines
+- **Ticket Browsing and Purchasing**
 
-Contributions to the Online Ticket Booking Agency project are welcome. If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+  - Buyers can browse available tickets through a responsive and intuitive interface.
+  - Users can filter and search for specific events.
+  - Secure and straightforward ticket purchasing process.
 
-## License
+- **Email Communications**
+  - Streamlined email communications for account verification and purchase confirmations.
+  - Automated emails ensure users are always informed about their transactions.
 
-This project is licensed under the [MIT License](LICENSE).
+---
 
-## Contact
+## Technology Stack
 
-For any inquiries or further information, please contact [Your Name](mailto:your-email@example.com).
+- **Next.js**: A powerful React framework for building server-side rendered applications, ensuring smooth and efficient rendering.
+- **TypeScript**: A statically typed superset of JavaScript that enhances code quality and maintainability.
+- **Tailwind CSS**: A utility-first CSS framework for rapidly building custom user interfaces, ensuring a responsive design.
+- **Supabase**: An open-source backend as a service that provides scalable data storage and real-time capabilities.
 
-Thank you for visiting this repository! Get ready to revolutionize the ticket booking experience with the Online Ticket Booking Agency.
+---
+
+## Usage
+
+1. **Create an Account**
+
+   - Navigate to the sign-up page.
+   - Enter your email and other required details.
+   - Verify your email through the confirmation link sent to your inbox.
+
+2. **Publish a Ticket**
+
+   - Log in as an event organizer.
+   - Click on "Publish Ticket."
+   - Enter event details such as name, date, time, location, and price.
+   - Submit the form to make the event live.
+
+3. **Browse and Purchase Tickets**
+
+   - Log in as a buyer.
+   - Browse the list of available events.
+   - Use filters and search to find specific events.
+   - Select an event and proceed to purchase tickets.
+   - Complete the transaction and receive a confirmation email.
+
+4. **Manage Account**
+   - Login to view and update your profile.
+   - Check your purchase history for all previous transactions.
+
+---
+
+## Conclusion
+
+The Ticket Booking Platform provides a seamless and efficient way to manage event ticket sales and purchases. With its user-friendly interface, robust feature set, and reliable technology stack, it ensures a smooth experience for both event organizers and ticket buyers.
+
+---
