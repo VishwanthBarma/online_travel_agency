@@ -4,31 +4,6 @@
 
 ---
 
-## Screenshots
-
-### Home Page
-
-![Home Page](screenshots/HomePage.png)
-
-### Login Page
-
-![Login Page](screenshots/LoginPage.png)
-
-### Agency Dashboard
-
-![Dashboard](screenshots/AgencyDashboard.png)
-![Dashboard](screenshots/AgencyDashboard2.png)
-
-### Uploading Tickets
-
-![Event Publishing](screenshots/UploadTickets.png)
-
-### Database Tables
-
-![Database Tables](screenshots/Database.png)
-
----
-
 ## Features
 
 - **User Authentication**
@@ -54,6 +29,31 @@
 - **Email Communications**
   - Streamlined email communications for account verification and purchase confirmations.
   - Automated emails ensure users are always informed about their transactions.
+
+---
+
+## Screenshots
+
+### Home Page
+
+![Home Page](screenshots/HomePage.png)
+
+### Login Page
+
+![Login Page](screenshots/LoginPage.png)
+
+### Agency Dashboard
+
+![Dashboard](screenshots/AgencyDashboard.png)
+![Dashboard](screenshots/AgencyDashboard2.png)
+
+### Uploading Tickets
+
+![Event Publishing](screenshots/UploadTickets.png)
+
+### Database Tables
+
+![Database Tables](screenshots/Database.png)
 
 ---
 
