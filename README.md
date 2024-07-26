@@ -36,24 +36,36 @@
 
 ### Home Page
 
-![Home Page](screenshots/HomePage.png)
+<div style="text-align: center;">
+  <img src="screenshots/HomePage.png" alt="Login Page" height="400">
+</div>
 
 ### Login Page
 
-![Login Page](screenshots/LoginPage.png)
+<div style="text-align: center;">
+  <img src="screenshots/LoginPage.png" alt="Login Page" height="400">
+</div>
 
 ### Agency Dashboard
 
-![Dashboard](screenshots/AgencyDashboard.png)
-![Dashboard](screenshots/AgencyDashboard2.png)
+<div style="text-align: center;">
+  <img src="screenshots/AgencyDashboard.png" alt="Login Page" height="400">
+</div>
+<div style="text-align: center;">
+  <img src="screenshots/AgencyDashboard2.png" alt="Login Page" height="400">
+</div>
 
 ### Uploading Tickets
 
-![Event Publishing](screenshots/UploadTickets.png)
+<div style="text-align: center;">
+  <img src="screenshots/UploadTickets.png" alt="Login Page" height="400">
+</div>
 
 ### Database Tables
 
-![Database Tables](screenshots/Database.png)
+<div style="text-align: center;">
+  <img src="screenshots/Database.png" alt="Login Page" height="400">
+</div>
 
 ---
 
